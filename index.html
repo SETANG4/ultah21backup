@@ -7,11 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,600&display=swap" rel="stylesheet" />
     <style>
         /* ----- RESET & BASE (sama seperti sebelumnya) ----- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             min-height: 100vh;
@@ -24,8 +20,6 @@
             -webkit-font-smoothing: antialiased;
             position: relative;
         }
-
-        /* ----- LIQUID GLASS BG ----- */
         .liquid-bg {
             position: fixed;
             inset: 0;
@@ -40,43 +34,10 @@
             opacity: 0.5;
             animation: orbFloat 14s ease-in-out infinite alternate;
         }
-        .orb-1 {
-            width: 500px;
-            height: 500px;
-            top: -150px;
-            right: -100px;
-            background: radial-gradient(circle, #6bc9ff, #4a8ecf);
-            animation-duration: 16s;
-        }
-        .orb-2 {
-            width: 450px;
-            height: 450px;
-            bottom: -120px;
-            left: -80px;
-            background: radial-gradient(circle, #f7b731, #d49a20);
-            animation-duration: 18s;
-            animation-delay: -4s;
-        }
-        .orb-3 {
-            width: 350px;
-            height: 350px;
-            top: 30%;
-            left: 40%;
-            background: radial-gradient(circle, #7a5ac0, #4a2a8a);
-            opacity: 0.3;
-            animation-duration: 20s;
-            animation-delay: -8s;
-        }
-        .orb-4 {
-            width: 300px;
-            height: 300px;
-            top: 60%;
-            right: 10%;
-            background: radial-gradient(circle, #6bc9ff, #4a8ecf);
-            opacity: 0.2;
-            animation-duration: 15s;
-            animation-delay: -2s;
-        }
+        .orb-1 { width: 500px; height: 500px; top: -150px; right: -100px; background: radial-gradient(circle, #6bc9ff, #4a8ecf); animation-duration: 16s; }
+        .orb-2 { width: 450px; height: 450px; bottom: -120px; left: -80px; background: radial-gradient(circle, #f7b731, #d49a20); animation-duration: 18s; animation-delay: -4s; }
+        .orb-3 { width: 350px; height: 350px; top: 30%; left: 40%; background: radial-gradient(circle, #7a5ac0, #4a2a8a); opacity: 0.3; animation-duration: 20s; animation-delay: -8s; }
+        .orb-4 { width: 300px; height: 300px; top: 60%; right: 10%; background: radial-gradient(circle, #6bc9ff, #4a8ecf); opacity: 0.2; animation-duration: 15s; animation-delay: -2s; }
         @keyframes orbFloat {
             0% { transform: translate(0,0) scale(1); }
             33% { transform: translate(30px,-40px) scale(1.1); }
@@ -84,23 +45,13 @@
             100% { transform: translate(40px,-20px) scale(1.05); }
         }
         .wave-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.06;
+            position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.06;
             background: repeating-linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 2%, transparent 4%, transparent 98%, rgba(255,255,255,0.1) 100%);
             background-size: 200% 100%;
             animation: waveShimmer 12s linear infinite;
         }
-        @keyframes waveShimmer {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 200% 0%; }
-        }
+        @keyframes waveShimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
 
-        /* ============================================================
-           GLASS CARD (konten utama) — langsung tampil
-           ============================================================ */
         .glass-card {
             position: relative;
             z-index: 2;
@@ -132,14 +83,8 @@
             pointer-events: none;
             animation: borderRotate 8s linear infinite;
         }
-        @keyframes borderRotate {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-        @keyframes cardAppear {
-            0% { opacity: 0; transform: scale(0.92) translateY(40px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
+        @keyframes borderRotate { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+        @keyframes cardAppear { 0% { opacity: 0; transform: scale(0.92) translateY(40px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
 
         .ripple {
             position: absolute;
@@ -150,12 +95,8 @@
             pointer-events: none;
             z-index: 10;
         }
-        @keyframes rippleAnim {
-            0% { transform: scale(0); opacity: 1; }
-            100% { transform: scale(4); opacity: 0; }
-        }
+        @keyframes rippleAnim { 0% { transform: scale(0); opacity: 1; } 100% { transform: scale(4); opacity: 0; } }
 
-        /* HEADER */
         .header {
             text-align: center;
             padding-bottom: 14px;
@@ -204,7 +145,6 @@
             margin-top: 2px;
         }
 
-        /* MISSION INDICATOR */
         .mission-indicator {
             display: flex;
             justify-content: center;
@@ -240,7 +180,6 @@
         .mission-dot .check { font-size: 1rem; }
         .mission-dot .num { font-size: 1rem; font-weight: 700; }
 
-        /* MISSION AREA */
         .mission-area {
             min-height: 240px;
             display: flex;
@@ -252,7 +191,6 @@
             transition: all 0.5s;
         }
 
-        /* Misi 1: Chips */
         .memory-chips {
             display: flex;
             flex-wrap: wrap;
@@ -276,11 +214,7 @@
             gap: 8px;
             box-shadow: 0 2px 16px rgba(0,0,0,0.1);
         }
-        .chip:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateY(-2px) scale(1.04);
-            border-color: rgba(255,255,255,0.12);
-        }
+        .chip:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px) scale(1.04); border-color: rgba(255,255,255,0.12); }
         .chip:active { transform: scale(0.92); }
         .chip .emoji { font-size: 1.2rem; }
         .chip .label { font-weight: 600; }
@@ -292,7 +226,6 @@
             transition: all 0.6s;
         }
 
-        /* Misi 2: Cat */
         .cat-mission {
             display: flex;
             flex-direction: column;
@@ -315,10 +248,7 @@
             position: relative;
             animation: ringPulse 3s ease-in-out infinite;
         }
-        @keyframes ringPulse {
-            0%,100% { transform: scale(1); }
-            50% { transform: scale(1.04); }
-        }
+        @keyframes ringPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
         .cat-ring:active { transform: scale(0.92) !important; }
         .cat-ring .cat-emoji {
             font-size: 4.2rem;
@@ -351,7 +281,6 @@
             font-size: 1.2rem;
         }
 
-        /* Misi 3: Balloons */
         .balloon-mission {
             display: flex;
             flex-wrap: wrap;
@@ -372,10 +301,7 @@
         .balloon-item:nth-child(3) { animation-delay: 1.2s; }
         .balloon-item:nth-child(4) { animation-delay: 0.3s; }
         .balloon-item:nth-child(5) { animation-delay: 0.9s; }
-        @keyframes balloonFloat {
-            0% { transform: translateY(0) rotate(-3deg); }
-            100% { transform: translateY(-16px) rotate(3deg); }
-        }
+        @keyframes balloonFloat { 0% { transform: translateY(0) rotate(-3deg); } 100% { transform: translateY(-16px) rotate(3deg); } }
         .balloon-item:hover { transform: scale(1.2) rotate(-6deg); }
         .balloon-item:active { transform: scale(0.8) rotate(10deg); }
         .balloon-item.popped-balloon {
@@ -387,7 +313,6 @@
             filter: grayscale(1);
         }
 
-        /* Labels */
         .mission-label {
             color: rgba(255,255,255,0.3);
             font-size: 0.8rem;
@@ -420,7 +345,6 @@
             padding-left: 16px;
         }
 
-        /* TRANSITION OVERLAY */
         .transition-overlay {
             position: absolute;
             inset: 0;
@@ -448,10 +372,7 @@
             margin-bottom: 12px;
             animation: iconPop 0.8s cubic-bezier(0.34,1.56,0.64,1);
         }
-        @keyframes iconPop {
-            0% { transform: scale(0) rotate(-20deg); opacity: 0; }
-            100% { transform: scale(1) rotate(0); opacity: 1; }
-        }
+        @keyframes iconPop { 0% { transform: scale(0) rotate(-20deg); opacity: 0; } 100% { transform: scale(1) rotate(0); opacity: 1; } }
         .transition-overlay .title {
             color: #fff;
             font-size: 2rem;
@@ -496,7 +417,6 @@
             transform: scale(1.04);
         }
 
-        /* FINAL COMPLETE */
         .final-complete {
             text-align: center;
             padding: 10px 0;
@@ -505,10 +425,7 @@
             font-size: 5rem;
             animation: catFloat 2.8s ease-in-out infinite;
         }
-        @keyframes catFloat {
-            0%,100% { transform: translateY(0) rotate(-3deg); }
-            50% { transform: translateY(-18px) rotate(3deg); }
-        }
+        @keyframes catFloat { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-18px) rotate(3deg); } }
         .final-complete .msg {
             color: rgba(255,255,255,0.85);
             font-size: 1.3rem;
@@ -542,9 +459,6 @@
             line-height: 1.6;
         }
 
-        /* ============================================================
-           TOMBOL MUSIK (floating) dengan animasi pulse jika autoplay gagal
-           ============================================================ */
         .music-toggle {
             position: fixed;
             bottom: 90px;
@@ -567,17 +481,9 @@
             box-shadow: 0 4px 24px rgba(0,0,0,0.2);
             user-select: none;
         }
-        .music-toggle:hover {
-            background: rgba(255,255,255,0.15);
-            transform: scale(1.08);
-        }
-        .music-toggle:active {
-            transform: scale(0.92);
-        }
-        .music-toggle .icon {
-            line-height: 1;
-        }
-        /* Animasi pulse untuk menarik perhatian jika autoplay gagal */
+        .music-toggle:hover { background: rgba(255,255,255,0.15); transform: scale(1.08); }
+        .music-toggle:active { transform: scale(0.92); }
+        .music-toggle .icon { line-height: 1; }
         .music-toggle.pulse {
             animation: pulseGlow 1.5s ease-in-out 3;
         }
@@ -586,9 +492,6 @@
             50% { box-shadow: 0 0 20px 10px rgba(107,201,255,0.3); }
         }
 
-        /* ============================================================
-           FOOTER CREDIT
-           ============================================================ */
         .footer-credit {
             position: fixed;
             bottom: 24px;
@@ -611,7 +514,6 @@
             border: 1px solid rgba(255,255,255,0.04);
         }
 
-        /* TOAST */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -636,7 +538,6 @@
         }
         .toast.show { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
 
-        /* CONFETTI */
         .confetti-container {
             position: fixed;
             inset: 0;
@@ -658,7 +559,6 @@
             100% { opacity: 0; transform: translateY(110vh) rotate(720deg) scale(0.3); }
         }
 
-        /* RESPONSIVE */
         @media (max-width: 640px) {
             .glass-card { padding: 24px 18px 28px; border-radius: 40px; }
             .header h1 { font-size: 2.2rem; }
@@ -684,7 +584,6 @@
 </head>
 <body>
 
-    <!-- LIQUID BG -->
     <div class="liquid-bg">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
@@ -693,38 +592,21 @@
         <div class="wave-overlay"></div>
     </div>
 
-    <!-- CONFETTI -->
     <div class="confetti-container" id="confettiContainer"></div>
-
-    <!-- TOAST -->
     <div class="toast" id="toast"></div>
 
-    <!-- ============================================================
-    GLASS CARD (KONTEN UTAMA)
-    ============================================================ -->
     <div class="glass-card" id="glassCard">
-
-        <!-- HEADER -->
         <div class="header">
             <div class="badge">🎂 21 Tahun</div>
-            <h1>
-                21 Langkah <br />
-                <span class="gradient-text">Menuju Dirimu</span>
-            </h1>
+            <h1>21 Langkah <br /><span class="gradient-text">Menuju Dirimu</span></h1>
             <div class="sub-date">✨ 22 Juli 2026 — Perjalanan Baru</div>
         </div>
-
-        <!-- MISSION INDICATOR -->
         <div class="mission-indicator" id="missionIndicator">
             <div class="mission-dot active" data-mission="0"><span class="num">1</span></div>
             <div class="mission-dot" data-mission="1"><span class="num">2</span></div>
             <div class="mission-dot" data-mission="2"><span class="num">3</span></div>
         </div>
-
-        <!-- MISSION AREA -->
         <div class="mission-area" id="missionArea"></div>
-
-        <!-- TRANSITION OVERLAY -->
         <div class="transition-overlay" id="transitionOverlay">
             <div class="big-icon" id="transitionIcon">🌟</div>
             <div class="title" id="transitionTitle">Langkah Berikutnya</div>
@@ -732,33 +614,27 @@
             <div class="motivation" id="transitionMotivation"></div>
             <button class="btn-continue" id="btnContinue">Lanjut ➜</button>
         </div>
-
     </div>
 
-    <!-- ============================================================
-    MUSIK TOGGLE (floating button)
-    ============================================================ -->
     <div class="music-toggle" id="musicToggle" title="Putar/hentikan musik">
         <span class="icon" id="musicIcon">🔊</span>
     </div>
 
-    <!-- ============================================================
-    FOOTER CREDIT
-    ============================================================ -->
     <div class="footer-credit">
         <span>✨ Create by @SETANG4 ✨</span>
     </div>
 
     <!-- ============================================================
-    AUDIO (menggunakan file lokal)
+    AUDIO — dua sumber: lokal + CDN fallback
     ============================================================ -->
     <audio id="bgMusic" loop preload="auto">
         <source src="BERSENJA GURAU - RAIM LAODE.mp3" type="audio/mpeg">
+        <source src="https://cdn.pixabay.com/download/audio/2022/02/22/audio_d89f5c5b6a.mp3?filename=happy-birthday-8-bit-177383.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         // ============================================================
-        //  1. PETUALANGAN MOTIVASI
+        //  1. PETUALANGAN MOTIVASI (sama seperti sebelumnya)
         // ============================================================
         const glassCard = document.getElementById('glassCard');
         const missionArea = document.getElementById('missionArea');
@@ -894,8 +770,6 @@
                 }
             );
         }
-
-        // --- RENDER FUNCTIONS ---
 
         function renderMissionChips() {
             const chipsData = [
@@ -1137,7 +1011,6 @@
             showToast('🎂 21 Tahun! Perjalananmu baru saja dimulai! 💫', 4000);
         }
 
-        // --- CONFETTI ---
         function fireConfetti(count = 120) {
             const container = confettiContainer;
             const colors = ['#6bc9ff', '#f7b731', '#d46a9e', '#7a5ac0', '#4a8ecf', '#ff7e67', '#5aa3e0', '#ffb3a6'];
@@ -1177,7 +1050,6 @@
             }
         }
 
-        // --- STYLE HEART POP (star pop) ---
         const styleHeart = document.createElement('style');
         styleHeart.textContent = `
                     @keyframes heartPop {
@@ -1187,7 +1059,6 @@
                 `;
         document.head.appendChild(styleHeart);
 
-        // --- INIT ADVENTURE (langsung tanpa lock screen) ---
         function initAdventure() {
             chipPopped.clear();
             catClicks = 0;
@@ -1197,63 +1068,65 @@
             transitionOverlay.classList.remove('show');
             renderMission(0);
             updateIndicator();
-            // Confetti pembuka
             setTimeout(() => fireConfetti(40), 500);
             showToast('🌱 Selamat datang! Selesaikan 3 misi untuk menemukan motivasi.', 3000);
         }
 
         // ============================================================
-        //  2. MUSIK — Autoplay dengan fallback dan indikator
+        //  2. MUSIK — AUTOPLAY YANG LEBIH KUAT
         // ============================================================
         const audio = document.getElementById('bgMusic');
         const musicToggle = document.getElementById('musicToggle');
         const musicIcon = document.getElementById('musicIcon');
         let isMusicPlaying = false;
         let musicStarted = false;
+        let autoplayAttempts = 0;
 
-        function playMusic() {
+        function attemptPlay() {
             if (musicStarted) return;
-            // Mulai dengan volume 0 agar tidak terdengar jika autoplay berhasil
-            audio.volume = 0;
+            audio.volume = 0.3;
             audio.play()
                 .then(() => {
                     musicStarted = true;
                     isMusicPlaying = true;
-                    // Naikkan volume secara bertahap
-                    audio.volume = 0.3;
                     musicIcon.textContent = '🔊';
                     musicToggle.classList.remove('pulse');
+                    console.log('✅ Autoplay sukses!');
                 })
-                .catch(() => {
-                    // Autoplay diblokir, tampilkan indikator
-                    audio.volume = 0.3; // reset volume
-                    musicIcon.textContent = '🔇';
-                    musicToggle.classList.add('pulse');
-                    console.log('Autoplay blocked. Click the music button to play.');
-                    // Tampilkan toast sekali saja
-                    if (!window._autoplayToastShown) {
-                        window._autoplayToastShown = true;
-                        showToast('🔇 Klik tombol musik di pojok kanan untuk memutar lagu.', 3000);
+                .catch((err) => {
+                    autoplayAttempts++;
+                    console.log(`❌ Autoplay gagal (percobaan ${autoplayAttempts}):`, err.message);
+                    if (autoplayAttempts >= 3) {
+                        // Tampilkan indikator dan beri tahu user
+                        musicIcon.textContent = '🔇';
+                        musicToggle.classList.add('pulse');
+                        if (!window._autoplayToastShown) {
+                            window._autoplayToastShown = true;
+                            showToast('🔇 Klik tombol musik untuk memutar lagu.', 4000);
+                        }
+                    } else {
+                        // Coba lagi setelah 1 detik
+                        setTimeout(attemptPlay, 1000);
                     }
                 });
         }
 
-        // Coba autoplay saat halaman dimuat
+        // Autoplay pertama saat halaman dimuat
         window.addEventListener('load', function() {
             initAdventure();
             // Tunggu sedikit agar audio siap
-            setTimeout(playMusic, 300);
+            setTimeout(attemptPlay, 300);
         });
 
-        // Jika user berinteraksi dengan halaman, coba putar musik (untuk bypass autoplay block)
+        // Jika user berinteraksi (klik/tap) di mana saja, coba putar
         document.addEventListener('click', function() {
             if (!musicStarted) {
-                playMusic();
+                attemptPlay();
             }
         });
         document.addEventListener('touchstart', function() {
             if (!musicStarted) {
-                playMusic();
+                attemptPlay();
             }
         });
 
@@ -1285,6 +1158,19 @@
                 musicIcon.textContent = '🔊';
             }
         });
+
+        // Fallback: jika user membuka halaman tapi tidak ada interaksi, tetap coba autoplay setiap 3 detik (maks 5 kali)
+        let fallbackInterval = setInterval(() => {
+            if (musicStarted) {
+                clearInterval(fallbackInterval);
+                return;
+            }
+            if (autoplayAttempts > 5) {
+                clearInterval(fallbackInterval);
+                return;
+            }
+            attemptPlay();
+        }, 3000);
 
         console.log('🎂 21 Langkah Menuju Dirimu — siap!');
     </script>
