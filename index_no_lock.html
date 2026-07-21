@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>🎂 21 Langkah Menuju Dirimu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,600&display=swap" rel="stylesheet" />
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            min-height: 100vh;
+            background: #0a0e1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        /* ----- LIQUID GLASS BG (untuk semua) ----- */
+        .liquid-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: radial-gradient(ellipse at 20% 50%, #1a2a4a, #0d1528 60%, #060a14);
+            overflow: hidden;
+        }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.5;
+            animation: orbFloat 14s ease-in-out infinite alternate;
+        }
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            top: -150px;
+            right: -100px;
+            background: radial-gradient(circle, #6bc9ff, #4a8ecf);
+            animation-duration: 16s;
+        }
+        .orb-2 {
+            width: 450px;
+            height: 450px;
+            bottom: -120px;
+            left: -80px;
+            background: radial-gradient(circle, #f7b731, #d49a20);
+            animation-duration: 18s;
+            animation-delay: -4s;
+        }
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            top: 30%;
+            left: 40%;
+            background: radial-gradient(circle, #7a5ac0, #4a2a8a);
+            opacity: 0.3;
+            animation-duration: 20s;
+            animation-delay: -8s;
+        }
+        .orb-4 {
+            width: 300px;
+            height: 300px;
+            top: 60%;
+            right: 10%;
+            background: radial-gradient(circle, #6bc9ff, #4a8ecf);
+            opacity: 0.2;
+            animation-duration: 15s;
+            animation-delay: -2s;
+        }
+        @keyframes orbFloat {
+            0% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(30px,-40px) scale(1.1); }
+            66% { transform: translate(-20px,30px) scale(0.9); }
+            100% { transform: translate(40px,-20px) scale(1.05); }
+        }
+        .wave-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.06;
+            background: repeating-linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 2%, transparent 4%, transparent 98%, rgba(255,255,255,0.1) 100%);
+            background-size: 200% 100%;
+            animation: waveShimmer 12s linear infinite;
+        }
+        @keyframes waveShimmer {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        /* ============================================================
+               GLASS CARD (konten utama) — langsung tampil
+               ============================================================ */
+        .glass-card {
+            position: relative;
+            z-index: 2;
+            max-width: 740px;
+            width: 100%;
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(40px) saturate(1.6);
+            -webkit-backdrop-filter: blur(40px) saturate(1.6);
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+            padding: 32px 28px 36px;
+            animation: cardAppear 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
+            overflow: hidden;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 62px;
+            padding: 2px;
+            background: conic-gradient(from 0deg, rgba(107,201,255,0.3), rgba(247,183,49,0.3), rgba(122,90,192,0.3), rgba(212,106,158,0.3), rgba(107,201,255,0.3));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: borderRotate 8s linear infinite;
+        }
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        @keyframes cardAppear {
+            0% { opacity: 0; transform: scale(0.92) translateY(40px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            transform: scale(0);
+            animation: rippleAnim 1s ease-out forwards;
+            pointer-events: none;
+            z-index: 10;
+        }
+        @keyframes rippleAnim {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(4); opacity: 0; }
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            position: relative;
+        }
+        .header .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.7);
+            font-weight: 500;
+            font-size: 0.7rem;
+            letter-spacing: 0.8px;
+            padding: 4px 20px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .header h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.1;
+            margin: 4px 0 2px;
+            text-shadow: 0 2px 40px rgba(0,0,0,0.2);
+        }
+        .header h1 .gradient-text {
+            background: linear-gradient(135deg, #6bc9ff, #f7b731, #d46a9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .sub-date {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(8px);
+            display: inline-block;
+            padding: 4px 22px;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.04);
+            margin-top: 2px;
+        }
+
+        /* MISSION INDICATOR */
+        .mission-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 16px 0 10px;
+        }
+        .mission-dot {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            border: 2px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.2);
+            transition: all 0.6s cubic-bezier(0.34,1.56,0.64,1);
+            position: relative;
+        }
+        .mission-dot.active {
+            border-color: rgba(107,201,255,0.5);
+            background: rgba(107,201,255,0.1);
+            color: #6bc9ff;
+            box-shadow: 0 0 30px rgba(107,201,255,0.1);
+        }
+        .mission-dot.done {
+            border-color: rgba(107,201,255,0.3);
+            background: rgba(107,201,255,0.05);
+            color: rgba(107,201,255,0.6);
+        }
+        .mission-dot .check { font-size: 1rem; }
+        .mission-dot .num { font-size: 1rem; font-weight: 700; }
+
+        /* MISSION AREA */
+        .mission-area {
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 6px 0 8px;
+            position: relative;
+            transition: all 0.5s;
+        }
+
+        /* Misi 1: Chips */
+        .memory-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 6px 0;
+        }
+        .chip {
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+        }
+        .chip:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-2px) scale(1.04);
+            border-color: rgba(255,255,255,0.12);
+        }
+        .chip:active { transform: scale(0.92); }
+        .chip .emoji { font-size: 1.2rem; }
+        .chip .label { font-weight: 600; }
+        .chip.popped {
+            opacity: 0.15;
+            transform: scale(0.8);
+            pointer-events: none;
+            filter: grayscale(1) blur(1px);
+            transition: all 0.6s;
+        }
+
+        /* Misi 2: Cat */
+        .cat-mission {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .cat-ring {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            position: relative;
+            animation: ringPulse 3s ease-in-out infinite;
+        }
+        @keyframes ringPulse {
+            0%,100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+        .cat-ring:active { transform: scale(0.92) !important; }
+        .cat-ring .cat-emoji {
+            font-size: 4.2rem;
+            line-height: 1;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.2));
+            transition: transform 0.3s;
+        }
+        .cat-ring:hover .cat-emoji { transform: scale(1.1) rotate(-6deg); }
+        .cat-ring .ring-glow {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            padding: 4px;
+            background: conic-gradient(from 120deg, rgba(107,201,255,0.2), rgba(247,183,49,0.2), rgba(122,90,192,0.2), rgba(107,201,255,0.2));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: borderRotate 6s linear infinite;
+        }
+        .cat-click-counter {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .cat-click-counter span {
+            color: #f7b731;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Misi 3: Balloons */
+        .balloon-mission {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 24px;
+            justify-content: center;
+            padding: 6px 0;
+        }
+        .balloon-item {
+            font-size: 3.4rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            animation: balloonFloat 3.6s ease-in-out infinite alternate;
+            filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));
+            position: relative;
+        }
+        .balloon-item:nth-child(1) { animation-delay: 0s; }
+        .balloon-item:nth-child(2) { animation-delay: 0.6s; }
+        .balloon-item:nth-child(3) { animation-delay: 1.2s; }
+        .balloon-item:nth-child(4) { animation-delay: 0.3s; }
+        .balloon-item:nth-child(5) { animation-delay: 0.9s; }
+        @keyframes balloonFloat {
+            0% { transform: translateY(0) rotate(-3deg); }
+            100% { transform: translateY(-16px) rotate(3deg); }
+        }
+        .balloon-item:hover { transform: scale(1.2) rotate(-6deg); }
+        .balloon-item:active { transform: scale(0.8) rotate(10deg); }
+        .balloon-item.popped-balloon {
+            opacity: 0.1;
+            transform: scale(0.4);
+            pointer-events: none;
+            transition: all 0.6s;
+            animation: none;
+            filter: grayscale(1);
+        }
+
+        /* Labels */
+        .mission-label {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .mission-title {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .mission-progress-text {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            margin-top: 6px;
+        }
+        .mission-quote {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            font-style: italic;
+            text-align: center;
+            max-width: 400px;
+            margin: 6px auto 0;
+            line-height: 1.5;
+            border-left: 2px solid rgba(107,201,255,0.15);
+            padding-left: 16px;
+        }
+
+        /* TRANSITION OVERLAY */
+        .transition-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            background: rgba(10,14,26,0.7);
+            backdrop-filter: blur(30px) saturate(1.8);
+            -webkit-backdrop-filter: blur(30px) saturate(1.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 60px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.7s cubic-bezier(0.34,1.56,0.64,1);
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .transition-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .transition-overlay .big-icon {
+            font-size: 4.5rem;
+            margin-bottom: 12px;
+            animation: iconPop 0.8s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        @keyframes iconPop {
+            0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+        .transition-overlay .title {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .transition-overlay .sub {
+            color: rgba(255,255,255,0.5);
+            font-size: 1rem;
+            font-weight: 400;
+            max-width: 400px;
+            line-height: 1.6;
+        }
+        .transition-overlay .motivation {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            font-weight: 500;
+            max-width: 440px;
+            line-height: 1.7;
+            margin: 10px 0 6px;
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 20px;
+            border-left: 3px solid rgba(107,201,255,0.2);
+        }
+        .transition-overlay .btn-continue {
+            margin-top: 18px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 40px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .transition-overlay .btn-continue:hover {
+            background: rgba(255,255,255,0.15);
+            transform: scale(1.04);
+        }
+
+        /* FINAL COMPLETE */
+        .final-complete {
+            text-align: center;
+            padding: 10px 0;
+        }
+        .final-complete .big-cat {
+            font-size: 5rem;
+            animation: catFloat 2.8s ease-in-out infinite;
+        }
+        @keyframes catFloat {
+            0%,100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-18px) rotate(3deg); }
+        }
+        .final-complete .msg {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.7;
+            margin: 10px 0 4px;
+        }
+        .final-complete .msg .highlight {
+            background: linear-gradient(135deg, #6bc9ff, #f7b731, #d46a9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .final-complete .sub-msg {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.9rem;
+            max-width: 420px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .final-complete .motivation-final {
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            font-style: italic;
+            max-width: 440px;
+            margin: 12px auto 0;
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 20px;
+            border-left: 3px solid rgba(247,183,49,0.2);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           TOMBOL MUSIK (floating)
+           ============================================================ */
+        .music-toggle {
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            z-index: 100;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+            user-select: none;
+        }
+        .music-toggle:hover {
+            background: rgba(255,255,255,0.15);
+            transform: scale(1.08);
+        }
+        .music-toggle:active {
+            transform: scale(0.92);
+        }
+        .music-toggle .icon {
+            line-height: 1;
+        }
+
+        /* ============================================================
+           FOOTER CREDIT
+           ============================================================ */
+        .footer-credit {
+            position: fixed;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 50;
+            color: rgba(255,255,255,0.2);
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            pointer-events: none;
+        }
+        .footer-credit span {
+            background: rgba(10,14,26,0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 4px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px) scale(0.9);
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(32px) saturate(1.5);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 60px;
+            padding: 12px 28px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1);
+            pointer-events: none;
+            max-width: 90%;
+            text-align: center;
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+
+        /* CONFETTI */
+        .confetti-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confettiFall linear forwards;
+            border-radius: 2px;
+        }
+        @keyframes confettiFall {
+            0% { opacity: 1; transform: translateY(-20px) rotate(0deg) scale(0.5); }
+            20% { opacity: 1; transform: translateY(20vh) rotate(120deg) scale(1); }
+            100% { opacity: 0; transform: translateY(110vh) rotate(720deg) scale(0.3); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            .glass-card { padding: 24px 18px 28px; border-radius: 40px; }
+            .header h1 { font-size: 2.2rem; }
+            .mission-dot { width: 36px; height: 36px; font-size: 1rem; }
+            .cat-ring { width: 90px; height: 90px; }
+            .cat-ring .cat-emoji { font-size: 3.6rem; }
+            .balloon-item { font-size: 2.8rem; }
+            .chip { padding: 6px 14px; font-size: 0.75rem; }
+            .transition-overlay .title { font-size: 1.6rem; }
+            .transition-overlay .motivation { font-size: 0.95rem; }
+            .music-toggle { bottom: 80px; right: 16px; width: 44px; height: 44px; font-size: 1.3rem; }
+        }
+        @media (max-width: 420px) {
+            .glass-card { padding: 18px 14px 22px; border-radius: 32px; }
+            .header h1 { font-size: 1.7rem; }
+            .mission-dot { width: 30px; height: 30px; font-size: 0.8rem; }
+            .cat-ring { width: 76px; height: 76px; }
+            .cat-ring .cat-emoji { font-size: 3rem; }
+            .balloon-item { font-size: 2.2rem; }
+            .music-toggle { bottom: 72px; right: 12px; width: 38px; height: 38px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LIQUID BG -->
+    <div class="liquid-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+        <div class="wave-overlay"></div>
+    </div>
+
+    <!-- CONFETTI -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ============================================================
+    GLASS CARD (KONTEN UTAMA)
+    ============================================================ -->
+    <div class="glass-card" id="glassCard">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="badge">🎂 21 Tahun</div>
+            <h1>
+                21 Langkah <br />
+                <span class="gradient-text">Menuju Dirimu</span>
+            </h1>
+            <div class="sub-date">✨ 22 Juli 2026 — Perjalanan Baru</div>
+        </div>
+
+        <!-- MISSION INDICATOR -->
+        <div class="mission-indicator" id="missionIndicator">
+            <div class="mission-dot active" data-mission="0"><span class="num">1</span></div>
+            <div class="mission-dot" data-mission="1"><span class="num">2</span></div>
+            <div class="mission-dot" data-mission="2"><span class="num">3</span></div>
+        </div>
+
+        <!-- MISSION AREA -->
+        <div class="mission-area" id="missionArea"></div>
+
+        <!-- TRANSITION OVERLAY -->
+        <div class="transition-overlay" id="transitionOverlay">
+            <div class="big-icon" id="transitionIcon">🌟</div>
+            <div class="title" id="transitionTitle">Langkah Berikutnya</div>
+            <div class="sub" id="transitionSub"></div>
+            <div class="motivation" id="transitionMotivation"></div>
+            <button class="btn-continue" id="btnContinue">Lanjut ➜</button>
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+    MUSIK TOGGLE (floating button)
+    ============================================================ -->
+    <div class="music-toggle" id="musicToggle" title="Putar/hentikan musik">
+        <span class="icon" id="musicIcon">🔊</span>
+    </div>
+
+    <!-- ============================================================
+    FOOTER CREDIT
+    ============================================================ -->
+    <div class="footer-credit">
+        <span>✨ Create by @SETANG4 ✨</span>
+    </div>
+
+    <!-- ============================================================
+    AUDIO (menggunakan file lokal)
+    ============================================================ -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="BERSENJA GURAU - RAIM LAODE.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // ============================================================
+        //  1. PETUALANGAN MOTIVASI
+        // ============================================================
+        const glassCard = document.getElementById('glassCard');
+        const missionArea = document.getElementById('missionArea');
+        const indicatorDots = document.querySelectorAll('.mission-dot');
+        const transitionOverlay = document.getElementById('transitionOverlay');
+        const transitionIcon = document.getElementById('transitionIcon');
+        const transitionTitle = document.getElementById('transitionTitle');
+        const transitionSub = document.getElementById('transitionSub');
+        const transitionMotivation = document.getElementById('transitionMotivation');
+        const btnContinue = document.getElementById('btnContinue');
+        const toast = document.getElementById('toast');
+        const confettiContainer = document.getElementById('confettiContainer');
+
+        let currentMission = 0;
+        let isTransitioning = false;
+        let chipPopped = new Set();
+        let catClicks = 0;
+        let balloonPopped = new Set();
+
+        const missionData = [{
+            name: 'Kenangan yang Membentukmu',
+            icon: '📖',
+            description: 'Klik 5 kenangan berharga dalam hidupmu',
+            target: 5,
+            quote: 'Setiap langkah di masa lalu adalah batu loncatan menuju versi terbaik dirimu.',
+            motivation: 'Kamu telah melewati begitu banyak hal. Setiap suka dan duka membentuk siapa dirimu hari ini. Banggalah pada perjalananmu.',
+            render: renderMissionChips,
+            reset: resetMissionChips
+        }, {
+            name: 'Kekuatan dalam Dirimu',
+            icon: '⚡',
+            description: 'Klik kucing 7 kali untuk menemukan kekuatanmu',
+            target: 7,
+            quote: 'Di dalam dirimu ada cahaya yang tak pernah padam, bahkan di saat tergelap sekalipun.',
+            motivation: 'Kamu lebih kuat dari yang kamu kira. Keberanianmu untuk terus melangkah, meski tak tahu arah, adalah bukti ketangguhanmu.',
+            render: renderMissionCat,
+            reset: resetMissionCat
+        }, {
+            name: 'Mimpi dan Harapan',
+            icon: '🌠',
+            description: 'Pecahkan 5 balon harapan untuk masa depan',
+            target: 5,
+            quote: 'Masa depan adalah kanvas kosong, dan kamu adalah pelukisnya.',
+            motivation: 'Usia 21 adalah awal dari babak baru. Jangan takut bermimpi besar. Dunia ini menunggu untuk melihat siapa dirimu sebenarnya.',
+            render: renderMissionBalloons,
+            reset: resetMissionBalloons
+        }];
+
+        let toastTimer = null;
+
+        function showToast(text, duration = 2000) {
+            toast.textContent = text;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
+        }
+
+        function createRipple(x, y, container) {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            const size = 40 + Math.random() * 60;
+            ripple.style.width = size + 'px';
+            ripple.style.height = size + 'px';
+            ripple.style.left = (x - size / 2) + 'px';
+            ripple.style.top = (y - size / 2) + 'px';
+            ripple.style.background = `radial-gradient(circle, rgba(255,255,255,${0.04 + Math.random()*0.1}) 0%, transparent 70%)`;
+            container.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 1000);
+        }
+
+        function updateIndicator() {
+            indicatorDots.forEach((dot, i) => {
+                dot.classList.remove('active', 'done');
+                if (i === currentMission) {
+                    dot.classList.add('active');
+                    dot.innerHTML = `<span class="num">${i+1}</span>`;
+                } else if (i < currentMission) {
+                    dot.classList.add('done');
+                    dot.innerHTML = `<span class="check">✅</span>`;
+                } else {
+                    dot.innerHTML = `<span class="num">${i+1}</span>`;
+                }
+            });
+        }
+
+        function showTransition(icon, title, sub, motivation, callback) {
+            isTransitioning = true;
+            transitionIcon.textContent = icon;
+            transitionTitle.textContent = title;
+            transitionSub.textContent = sub;
+            transitionMotivation.textContent = motivation;
+            transitionOverlay.classList.add('show');
+            fireConfetti(60);
+            btnContinue.onclick = function() {
+                transitionOverlay.classList.remove('show');
+                isTransitioning = false;
+                if (callback) callback();
+            };
+        }
+
+        function completeMission() {
+            const data = missionData[currentMission];
+            const next = currentMission + 1;
+            if (next >= missionData.length) {
+                showTransition(
+                    '🎉',
+                    '21 Tahun, Awal yang Baru',
+                    'Kamu telah menyelesaikan perjalanan ini. Kini saatnya melangkah.',
+                    'Ingatlah selalu: kamu adalah karya seni yang terus berkembang. Dunia beruntung memiliki dirimu. 🌟',
+                    () => {
+                        renderFinalComplete();
+                        fireConfetti(250);
+                        showToast('🎂 Selamat Ulang Tahun ke-21! Kamu luar biasa! 💫', 4000);
+                    }
+                );
+                return;
+            }
+            const nextData = missionData[next];
+            showTransition(
+                nextData.icon,
+                `Langkah ${next+1}: ${nextData.name}`,
+                nextData.description,
+                nextData.motivation,
+                () => {
+                    currentMission = next;
+                    renderMission(currentMission);
+                    updateIndicator();
+                    if (next === 1) catClicks = 0;
+                    else if (next === 2) balloonPopped.clear();
+                    showToast(`🚀 Misi ${next+1}: ${nextData.name}`, 2000);
+                }
+            );
+        }
+
+        // --- RENDER FUNCTIONS ---
+
+        function renderMissionChips() {
+            const chipsData = [
+                { key: 'first', emoji: '🌱', label: 'Awal Mula' },
+                { key: 'growth', emoji: '🌿', label: 'Bertumbuh' },
+                { key: 'challenge', emoji: '⚡', label: 'Tantangan' },
+                { key: 'lesson', emoji: '📚', label: 'Pelajaran' },
+                { key: 'strength', emoji: '💪', label: 'Kekuatan' }
+            ];
+            const messages = {
+                first: '🌱 Setiap perjalanan dimulai dari satu langkah kecil. Kamu sudah melangkah sejauh ini.',
+                growth: '🌿 Pertumbuhan tidak pernah instan. Kamu berkembang setiap hari, bahkan tanpa sadar.',
+                challenge: '⚡ Tantangan adalah guru terbaik. Kamu telah menghadapinya dengan berani.',
+                lesson: '📚 Setiap pelajaran, baik atau buruk, membawamu lebih dekat pada versi terbaikmu.',
+                strength: '💪 Kekuatan sejati bukan tentang tidak pernah jatuh, tapi tentang bangkit kembali.'
+            };
+
+            let html = `
+                        <div class="mission-label">📖 Misi 1</div>
+                        <div class="mission-title">Kenangan yang Membentukmu</div>
+                        <div class="memory-chips" id="memoryChipsContainer">
+                    `;
+            chipsData.forEach(c => {
+                const popped = chipPopped.has(c.key);
+                html += `
+                            <div class="chip ${popped ? 'popped' : ''}" data-key="${c.key}">
+                                <span class="emoji">${c.emoji}</span>
+                                <span class="label">${c.label}</span>
+                            </div>
+                        `;
+            });
+            html += `
+                        </div>
+                        <div class="mission-progress-text">${chipPopped.size} / 5 terkumpul</div>
+                        <div class="mission-quote">${missionData[0].quote}</div>
+                    `;
+            missionArea.innerHTML = html;
+
+            document.querySelectorAll('#memoryChipsContainer .chip:not(.popped)').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    if (isTransitioning) return;
+                    const key = this.dataset.key;
+                    if (chipPopped.has(key)) return;
+                    chipPopped.add(key);
+                    this.classList.add('popped');
+
+                    const rect = this.getBoundingClientRect();
+                    const cardRect = glassCard.getBoundingClientRect();
+                    createRipple(
+                        rect.left + rect.width / 2 - cardRect.left,
+                        rect.top + rect.height / 2 - cardRect.top,
+                        glassCard
+                    );
+
+                    showToast(messages[key] || '✨ Kenangan indah.', 2200);
+                    spawnMiniConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2, 14);
+
+                    const progress = document.querySelector('.mission-progress-text');
+                    if (progress) progress.textContent = `${chipPopped.size} / 5 terkumpul`;
+
+                    if (chipPopped.size >= 5) {
+                        completeMission();
+                    }
+                });
+            });
+        }
+
+        function resetMissionChips() {
+            chipPopped.clear();
+        }
+
+        function renderMissionCat() {
+            const faces = ['🐱', '😸', '😺', '😻', '🐈‍⬛', '🐈', '😹', '😽'];
+            let html = `
+                        <div class="mission-label">⚡ Misi 2</div>
+                        <div class="mission-title">Kekuatan dalam Dirimu</div>
+                        <div class="cat-mission">
+                            <div class="cat-ring" id="catRing">
+                                <div class="ring-glow"></div>
+                                <span class="cat-emoji" id="catMissionEmoji">🐱</span>
+                            </div>
+                            <div class="cat-click-counter">Klik: <span id="catClickCount">${catClicks}</span> / 7</div>
+                            <div class="mission-quote">${missionData[1].quote}</div>
+                        </div>
+                    `;
+            missionArea.innerHTML = html;
+
+            const ring = document.getElementById('catRing');
+            const emoji = document.getElementById('catMissionEmoji');
+            const counter = document.getElementById('catClickCount');
+
+            ring.addEventListener('click', function(e) {
+                if (isTransitioning) return;
+                if (catClicks >= 7) return;
+
+                catClicks++;
+                counter.textContent = catClicks;
+
+                const rect = this.getBoundingClientRect();
+                const cardRect = glassCard.getBoundingClientRect();
+                createRipple(
+                    rect.left + rect.width / 2 - cardRect.left,
+                    rect.top + rect.height / 2 - cardRect.top,
+                    glassCard
+                );
+
+                const face = faces[Math.floor(Math.random() * faces.length)];
+                emoji.textContent = face;
+                this.style.transform = 'scale(0.92) rotate(-6deg)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                    if (catClicks < 7) emoji.textContent = '🐱';
+                    else emoji.textContent = '😻';
+                }, 400);
+
+                const msgs = [
+                    '🐾 Kamu lebih kuat dari yang kamu kira.',
+                    '💪 Setiap klik adalah langkah keberanian.',
+                    '✨ Kekuatan sejati ada di dalam dirimu.',
+                    '🌟 Kamu mampu menghadapi apapun.'
+                ];
+                showToast(msgs[Math.floor(Math.random() * msgs.length)], 1200);
+
+                const cx = rect.left + rect.width / 2;
+                const cy = rect.top + rect.height / 2;
+                for (let i = 0; i < 6; i++) {
+                    const heart = document.createElement('div');
+                    heart.textContent = ['⭐', '💫', '✨', '🌟', '⚡'][Math.floor(Math.random() * 5)];
+                    heart.style.cssText = `
+                                position: fixed; left: ${cx + (Math.random()-0.5)*100}px; top: ${cy + (Math.random()-0.5)*80}px;
+                                font-size: ${1.4 + Math.random()*1.8}rem; pointer-events: none; z-index: 100;
+                                animation: heartPop 1.2s ease-out forwards;
+                            `;
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 1400);
+                }
+
+                if (catClicks >= 7) {
+                    completeMission();
+                }
+            });
+        }
+
+        function resetMissionCat() {
+            catClicks = 0;
+        }
+
+        function renderMissionBalloons() {
+            const balloons = [
+                { id: 'b1', emoji: '🎈', color: '#6bc9ff' },
+                { id: 'b2', emoji: '🎈', color: '#f7b731' },
+                { id: 'b3', emoji: '🎈', color: '#d46a9e' },
+                { id: 'b4', emoji: '🎈', color: '#7a5ac0' },
+                { id: 'b5', emoji: '🎈', color: '#4a8ecf' }
+            ];
+            const hopes = [
+                '🌠 Percayalah pada mimpimu.',
+                '🌟 Masa depan penuh dengan kemungkinan.',
+                '✨ Kamu berhak atas kebahagiaan.',
+                '💫 Dunia menunggu bakatmu.',
+                '⭐ Jangan pernah berhenti bermimpi.'
+            ];
+
+            let html = `
+                        <div class="mission-label">🌠 Misi 3</div>
+                        <div class="mission-title">Mimpi dan Harapan</div>
+                        <div class="balloon-mission" id="balloonContainer">
+                    `;
+            balloons.forEach(b => {
+                const popped = balloonPopped.has(b.id);
+                html += `
+                            <span class="balloon-item ${popped ? 'popped-balloon' : ''}" data-id="${b.id}" style="color:${b.color};">${b.emoji}</span>
+                        `;
+            });
+            html += `
+                        </div>
+                        <div class="mission-progress-text">${balloonPopped.size} / 5 pecah</div>
+                        <div class="mission-quote">${missionData[2].quote}</div>
+                    `;
+            missionArea.innerHTML = html;
+
+            let hopeIndex = 0;
+            document.querySelectorAll('#balloonContainer .balloon-item:not(.popped-balloon)').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    if (isTransitioning) return;
+                    const id = this.dataset.id;
+                    if (balloonPopped.has(id)) return;
+                    balloonPopped.add(id);
+                    this.classList.add('popped-balloon');
+
+                    const rect = this.getBoundingClientRect();
+                    const cardRect = glassCard.getBoundingClientRect();
+                    createRipple(
+                        rect.left + rect.width / 2 - cardRect.left,
+                        rect.top + rect.height / 2 - cardRect.top,
+                        glassCard
+                    );
+
+                    const msg = hopes[hopeIndex % hopes.length];
+                    hopeIndex++;
+                    showToast('💥 ' + msg, 1800);
+                    spawnMiniConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2, 22);
+
+                    const progress = document.querySelector('.mission-progress-text');
+                    if (progress) progress.textContent = `${balloonPopped.size} / 5 pecah`;
+
+                    if (balloonPopped.size >= 5) {
+                        completeMission();
+                    }
+                });
+            });
+        }
+
+        function resetMissionBalloons() {
+            balloonPopped.clear();
+        }
+
+        function renderMission(index) {
+            const data = missionData[index];
+            data.render();
+        }
+
+        function renderFinalComplete() {
+            missionArea.innerHTML = `
+                        <div class="final-complete">
+                            <div class="big-cat">🥳</div>
+                            <div class="msg">
+                                🎉 Selamat ulang tahun ke-21, <span class="highlight">Dirimu</span>! 🎉
+                            </div>
+                            <div class="sub-msg">
+                                Kamu adalah karya seni yang terus berkembang. Setiap langkah, setiap jatuh, setiap bangkit — semuanya membentuk dirimu yang luar biasa.
+                            </div>
+                            <div class="motivation-final">
+                                🌟 "Kamu tidak harus sempurna untuk menjadi luar biasa. Cukup menjadi dirimu sendiri, dan dunia akan melihat keindahan itu." 🌟
+                            </div>
+                        </div>
+                    `;
+            fireConfetti(200);
+            showToast('🎂 21 Tahun! Perjalananmu baru saja dimulai! 💫', 4000);
+        }
+
+        // --- CONFETTI ---
+        function fireConfetti(count = 120) {
+            const container = confettiContainer;
+            const colors = ['#6bc9ff', '#f7b731', '#d46a9e', '#7a5ac0', '#4a8ecf', '#ff7e67', '#5aa3e0', '#ffb3a6'];
+            const w = window.innerWidth;
+            for (let i = 0; i < count; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                const size = 6 + Math.random() * 16;
+                piece.style.width = size + 'px';
+                piece.style.height = size + 'px';
+                piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+                piece.style.left = (Math.random() * w) + 'px';
+                piece.style.top = (-20 - Math.random() * 60) + 'px';
+                piece.style.animationDuration = (1.2 + Math.random() * 2.8) + 's';
+                piece.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+                container.appendChild(piece);
+                setTimeout(() => piece.remove(), 4000);
+            }
+        }
+
+        function spawnMiniConfetti(cx, cy, count = 16) {
+            const container = confettiContainer;
+            const colors = ['#6bc9ff', '#f7b731', '#d46a9e', '#7a5ac0', '#4a8ecf', '#ff7e67'];
+            for (let i = 0; i < count; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                const size = 5 + Math.random() * 12;
+                piece.style.width = size + 'px';
+                piece.style.height = size + 'px';
+                piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+                piece.style.left = (cx + (Math.random() - 0.5) * 60) + 'px';
+                piece.style.top = (cy + (Math.random() - 0.5) * 30) + 'px';
+                piece.style.animationDuration = (0.8 + Math.random() * 1.4) + 's';
+                piece.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+                container.appendChild(piece);
+                setTimeout(() => piece.remove(), 2500);
+            }
+        }
+
+        // --- STYLE HEART POP (star pop) ---
+        const styleHeart = document.createElement('style');
+        styleHeart.textContent = `
+                    @keyframes heartPop {
+                        0% { opacity: 1; transform: translate(0,0) scale(0.3) rotate(0deg); }
+                        100% { opacity: 0; transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(1.6) rotate(40deg); }
+                    }
+                `;
+        document.head.appendChild(styleHeart);
+
+        // --- INIT ADVENTURE (langsung tanpa lock screen) ---
+        function initAdventure() {
+            chipPopped.clear();
+            catClicks = 0;
+            balloonPopped.clear();
+            currentMission = 0;
+            isTransitioning = false;
+            transitionOverlay.classList.remove('show');
+            renderMission(0);
+            updateIndicator();
+            // Confetti pembuka
+            setTimeout(() => fireConfetti(40), 500);
+            showToast('🌱 Selamat datang! Selesaikan 3 misi untuk menemukan motivasi.', 3000);
+        }
+
+        // ============================================================
+        //  2. MUSIK — Auto Play + Toggle (menggunakan file lokal)
+        // ============================================================
+        const audio = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        let isMusicPlaying = false;
+        let musicStarted = false;
+
+        function playMusic() {
+            if (musicStarted) return;
+            audio.volume = 0.3;
+            audio.play().then(() => {
+                musicStarted = true;
+                isMusicPlaying = true;
+                musicIcon.textContent = '🔊';
+            }).catch(() => {
+                // Autoplay di-block, user harus klik tombol
+                console.log('Autoplay blocked, user must click.');
+            });
+        }
+
+        // Coba play saat halaman dimuat
+        window.addEventListener('load', function() {
+            // Mulai petualangan
+            initAdventure();
+            // Coba putar musik (bisa di-block browser)
+            playMusic();
+        });
+
+        // Tombol toggle musik
+        musicToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (!musicStarted) {
+                // Coba mulai
+                audio.volume = 0.3;
+                audio.play().then(() => {
+                    musicStarted = true;
+                    isMusicPlaying = true;
+                    musicIcon.textContent = '🔊';
+                }).catch(() => {
+                    showToast('🔇 Klik di halaman untuk memutar musik.', 2000);
+                });
+                return;
+            }
+            if (isMusicPlaying) {
+                audio.pause();
+                isMusicPlaying = false;
+                musicIcon.textContent = '🔇';
+            } else {
+                audio.play();
+                isMusicPlaying = true;
+                musicIcon.textContent = '🔊';
+            }
+        });
+
+        // Jika user klik di mana saja, coba mulai musik (untuk mengatasi autoplay block)
+        document.addEventListener('click', function() {
+            if (!musicStarted) {
+                audio.volume = 0.3;
+                audio.play().then(() => {
+                    musicStarted = true;
+                    isMusicPlaying = true;
+                    musicIcon.textContent = '🔊';
+                }).catch(() => {});
+            }
+        });
+
+        console.log('🎂 21 Langkah Menuju Dirimu — siap!');
+    </script>
+</body>
+</html>
