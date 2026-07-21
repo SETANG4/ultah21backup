@@ -6,7 +6,7 @@
     <title>🎂 21 Langkah Menuju Dirimu</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,600&display=swap" rel="stylesheet" />
     <style>
-        /* ----- RESET & BASE ----- */
+        /* ----- RESET & BASE (sama seperti sebelumnya) ----- */
         * {
             margin: 0;
             padding: 0;
@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        /* ----- LIQUID GLASS BG (untuk semua) ----- */
+        /* ----- LIQUID GLASS BG ----- */
         .liquid-bg {
             position: fixed;
             inset: 0;
@@ -99,8 +99,8 @@
         }
 
         /* ============================================================
-               GLASS CARD (konten utama) — langsung tampil
-               ============================================================ */
+           GLASS CARD (konten utama) — langsung tampil
+           ============================================================ */
         .glass-card {
             position: relative;
             z-index: 2;
@@ -543,7 +543,7 @@
         }
 
         /* ============================================================
-           TOMBOL MUSIK (floating)
+           TOMBOL MUSIK (floating) dengan animasi pulse jika autoplay gagal
            ============================================================ */
         .music-toggle {
             position: fixed;
@@ -576,6 +576,14 @@
         }
         .music-toggle .icon {
             line-height: 1;
+        }
+        /* Animasi pulse untuk menarik perhatian jika autoplay gagal */
+        .music-toggle.pulse {
+            animation: pulseGlow 1.5s ease-in-out 3;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(107,201,255,0); }
+            50% { box-shadow: 0 0 20px 10px rgba(107,201,255,0.3); }
         }
 
         /* ============================================================
@@ -1195,7 +1203,7 @@
         }
 
         // ============================================================
-        //  2. MUSIK — Auto Play + Toggle (menggunakan file lokal)
+        //  2. MUSIK — Autoplay dengan fallback dan indikator
         // ============================================================
         const audio = document.getElementById('bgMusic');
         const musicToggle = document.getElementById('musicToggle');
@@ -1205,23 +1213,48 @@
 
         function playMusic() {
             if (musicStarted) return;
-            audio.volume = 0.3;
-            audio.play().then(() => {
-                musicStarted = true;
-                isMusicPlaying = true;
-                musicIcon.textContent = '🔊';
-            }).catch(() => {
-                // Autoplay di-block, user harus klik tombol
-                console.log('Autoplay blocked, user must click.');
-            });
+            // Mulai dengan volume 0 agar tidak terdengar jika autoplay berhasil
+            audio.volume = 0;
+            audio.play()
+                .then(() => {
+                    musicStarted = true;
+                    isMusicPlaying = true;
+                    // Naikkan volume secara bertahap
+                    audio.volume = 0.3;
+                    musicIcon.textContent = '🔊';
+                    musicToggle.classList.remove('pulse');
+                })
+                .catch(() => {
+                    // Autoplay diblokir, tampilkan indikator
+                    audio.volume = 0.3; // reset volume
+                    musicIcon.textContent = '🔇';
+                    musicToggle.classList.add('pulse');
+                    console.log('Autoplay blocked. Click the music button to play.');
+                    // Tampilkan toast sekali saja
+                    if (!window._autoplayToastShown) {
+                        window._autoplayToastShown = true;
+                        showToast('🔇 Klik tombol musik di pojok kanan untuk memutar lagu.', 3000);
+                    }
+                });
         }
 
-        // Coba play saat halaman dimuat
+        // Coba autoplay saat halaman dimuat
         window.addEventListener('load', function() {
-            // Mulai petualangan
             initAdventure();
-            // Coba putar musik (bisa di-block browser)
-            playMusic();
+            // Tunggu sedikit agar audio siap
+            setTimeout(playMusic, 300);
+        });
+
+        // Jika user berinteraksi dengan halaman, coba putar musik (untuk bypass autoplay block)
+        document.addEventListener('click', function() {
+            if (!musicStarted) {
+                playMusic();
+            }
+        });
+        document.addEventListener('touchstart', function() {
+            if (!musicStarted) {
+                playMusic();
+            }
         });
 
         // Tombol toggle musik
@@ -1230,13 +1263,16 @@
             if (!musicStarted) {
                 // Coba mulai
                 audio.volume = 0.3;
-                audio.play().then(() => {
-                    musicStarted = true;
-                    isMusicPlaying = true;
-                    musicIcon.textContent = '🔊';
-                }).catch(() => {
-                    showToast('🔇 Klik di halaman untuk memutar musik.', 2000);
-                });
+                audio.play()
+                    .then(() => {
+                        musicStarted = true;
+                        isMusicPlaying = true;
+                        musicIcon.textContent = '🔊';
+                        musicToggle.classList.remove('pulse');
+                    })
+                    .catch(() => {
+                        showToast('🔇 Gagal memutar musik. Coba lagi.', 2000);
+                    });
                 return;
             }
             if (isMusicPlaying) {
@@ -1247,18 +1283,6 @@
                 audio.play();
                 isMusicPlaying = true;
                 musicIcon.textContent = '🔊';
-            }
-        });
-
-        // Jika user klik di mana saja, coba mulai musik (untuk mengatasi autoplay block)
-        document.addEventListener('click', function() {
-            if (!musicStarted) {
-                audio.volume = 0.3;
-                audio.play().then(() => {
-                    musicStarted = true;
-                    isMusicPlaying = true;
-                    musicIcon.textContent = '🔊';
-                }).catch(() => {});
             }
         });
 
